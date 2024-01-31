@@ -1,6 +1,7 @@
 import { CodePipeline, CodePipelineSource, ShellStep } from 'aws-cdk-lib/pipelines';
 import { Construct } from 'constructs';
 import {  Stack, StackProps } from 'aws-cdk-lib';
+import { CdkEBStage } from './eb-stage';
 
 /**
  * The stack that defines the application pipeline
@@ -16,7 +17,7 @@ export class CdkPipelineStack extends Stack {
        // How it will be built and synthesized
        synth: new ShellStep('Synth', {
          // Where the source can be found
-         input: CodePipelineSource.gitHub('OWNER/REPO', 'main'),
+         input: CodePipelineSource.gitHub('minghuang1002/ElasticWebApp', 'main'),
          
          // Install dependencies, build and run cdk synth
          installCommands: ['npm i -g npm@latest'],
